@@ -46,6 +46,8 @@ for npaContour in npaContours:
     if cv2.contourArea(npaContour) >= 0:
         [intX, intY, intW, intH] = cv2.boundingRect(npaContour)
 #If a contour diameter is larger than 11 the camera inherently fails
+#Find the bigger value here and add it to a constant variable
+#Then test that variable at the end to determine failure
         if intW > 11 or intH > 11:
             print "CAMERA FAILURE"
 
@@ -55,6 +57,7 @@ for npaContour in npaContours:
               (0, 0, 255),                            # red
               2)                                      # thickness
 
+#Outdated test - requires the implementation set out above
 if num_black > 22:
     print "CAMERA FAILURE"
 else:
